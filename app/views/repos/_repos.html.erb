@@ -1,0 +1,23 @@
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Owner</th>
+    <th>Url</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @repos.each do |repo| %>
+    <tr>
+      <td><%= repo.name %></td>
+      <td><%= image_tag repo.owner.avatar_url, size: '16x16' %><%= repo.owner.login %></td>
+      <td><%= link_to repo.url, repo.url %></td>
+      <td><%= repo.description %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @repos if @repos %>
